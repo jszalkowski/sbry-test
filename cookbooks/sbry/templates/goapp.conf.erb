@@ -1,0 +1,13 @@
+[Unit]
+Description=goapp systemd script
+After=syslog.target network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/goapp.pid
+ExecStart=@dupa
+ExecReload=/usr/sbin/postfix reload
+ExecStop=/usr/sbin/postfix stop
+
+[Install]
+WantedBy=multi-user.target
