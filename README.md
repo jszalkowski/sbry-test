@@ -1,19 +1,8 @@
-<<<<<<< HEAD
+
 SBRY-TEST
 =============
 
 #####Test is completed according to ''AWS'' Best practices
-
-This repo contains 3 branches.
-
-
-
-- **master**: Infrastructure is described using a terraform
-- **cookbooks**: Chef cookbook used to automate deployment
-- **goapp**: GO application that is served on app nodes
-
-
-Each branch is used separately on different stages of deployment
 
 About
 -------------------------------
@@ -46,7 +35,6 @@ In main configuration file **variables.tf**
 **How to provision**: 
 After it's configured just type 
 ```
-$ ssh-keygen -q -t rsa -f ~/.ssh/sbry -N '' -C sbry
 $ make
 ```
 or
@@ -63,7 +51,7 @@ use given url in your browser to access the go application that is going to trig
 
 Resources should be available within few minutes after terraform prints its output
 =======
-Cookbooks branch
+Cookbooks 
 --------------
 
 This branch contains sbry cookbook
@@ -73,4 +61,4 @@ This branch contains sbry cookbook
 - **sbry::goapp** installs and configures go application
 - **sbry::lb** installs and configures nginx lb
 
->>>>>>> cookbooks
+
