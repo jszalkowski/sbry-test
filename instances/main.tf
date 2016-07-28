@@ -9,15 +9,15 @@ resource "aws_eip" "lb" {
 }
 
 resource "aws_iam_instance_profile" "lb_profile" {
-    name = "lb_profile"
-    roles = ["${aws_iam_role.role.name}"]
+  name  = "lb_profile"
+  roles = ["${aws_iam_role.role.name}"]
 }
 
-
 resource "aws_iam_role_policy" "lb_policy" {
-    name = "lb_policy"
-    role = "${aws_iam_role.role.id}"
-    policy = <<EOF
+  name = "lb_policy"
+  role = "${aws_iam_role.role.id}"
+
+  policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -34,8 +34,9 @@ EOF
 }
 
 resource "aws_iam_role" "role" {
-    name = "lb_role"
-    assume_role_policy = <<EOF
+  name = "lb_role"
+
+  assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -52,12 +53,8 @@ resource "aws_iam_role" "role" {
 EOF
 }
 
-
-
-
-
 resource "aws_instance" "nginx" {
-  ami 			      = "${var.ami_id}"
+  ami                         = "${var.ami_id}"
   availability_zone           = "${element(split(",", var.availability_zones), 0)}"
   instance_type               = "${var.instance_type}"
   key_name                    = "${var.aws_key_name}"
@@ -66,14 +63,14 @@ resource "aws_instance" "nginx" {
   subnet_id                   = "${element(split(",", var.public_subnets_id), 0)}"
   associate_public_ip_address = true
   iam_instance_profile        = "${aws_iam_instance_profile.lb_profile.name}"
-  user_data = "${file("./lc/userdata.sh")}"
+  user_data                   = "${file("./lc/userdata.sh")}"
+
   tags {
     Name        = "${var.project}-${var.environment}-nginxlb"
     Project     = "${var.project}"
     Environment = "${var.environment}"
     Owner       = "${var.owner}"
     CostCentre  = "${var.costcentre}"
-    role	= "${var.role_web}"
+    role        = "${var.role_web}"
   }
-
 }
