@@ -8,7 +8,7 @@ if ! chef-solo -v > /dev/null 2>&1; then
     cd /tmp/ && wget  https://packages.chef.io/stable/ubuntu/10.04/chef_12.6.0-1_amd64.deb
     dpkg -i chef_12.6.0-1_amd64.deb && rm -f chef_12.6.0-1_amd64.deb
     cd /etc/
-    git clone -b cookbooks --single-branch https://github.com/jszalkowski/sbry-test.git /etc/chef
+    git clone https://github.com/jszalkowski/sbry-test.git /etc/chef
 fi
 apt-get update &&
 ROLE=$(aws ec2 describe-tags --filters   "Name=resource-type,Values=instance"   "Name=resource-id,Values=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)"   "Name=key,Values=role"  --region eu-west-1  | jq -r .Tags[].Value)
