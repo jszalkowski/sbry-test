@@ -43,7 +43,9 @@ In order to deploy test to AWS account you must specify:
 In main configuration file **variables.tf**
 
 **How to provision**: 
-After it's configured just type in `make` or 
+After it's configured just type 
+ssh-keygen -q -t rsa -f ~/.ssh/sbry -N '' -C sbry
+`make`  
 generate ssh key configure it in **variables.tf**
 `terraform get`
 `terraform plan` 
