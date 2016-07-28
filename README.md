@@ -44,12 +44,12 @@ In main configuration file **variables.tf**
 
 **How to provision**: 
 After it's configured just type 
-ssh-keygen -q -t rsa -f ~/.ssh/sbry -N '' -C sbry
-`make`  
+$ ssh-keygen -q -t rsa -f ~/.ssh/sbry -N '' -C sbry
+$ make
 generate ssh key configure it in **variables.tf**
-`terraform get`
-`terraform plan` 
-`terraform apply`
+$ terraform get
+$ terraform plan 
+$ terraform apply 
 
 **How to test**: 
 After is provisioned terraform should print assigned EIP as its output
