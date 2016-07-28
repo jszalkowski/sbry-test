@@ -47,7 +47,10 @@ After it's configured just type
 ```
 $ ssh-keygen -q -t rsa -f ~/.ssh/sbry -N '' -C sbry
 $ make
+```
+or
 generate ssh key configure it in **variables.tf**
+```
 $ terraform get
 $ terraform plan 
 $ terraform apply 
