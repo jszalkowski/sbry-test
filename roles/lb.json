@@ -1,0 +1,7 @@
+{
+  "run_list": [
+    "recipe[sbry::consul]",
+    "recipe[sbry::consul-template]",
+    "recipe[sbry::lb]"
+  ]
+}

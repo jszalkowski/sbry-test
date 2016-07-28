@@ -1,0 +1,11 @@
+[Unit]
+Description=Job that runs the goapp service
+Documentation=man:foo(1)
+
+[Service]
+Environment=statedir=/var/cache/goapp
+ExecStartPre=/bin/mkdir -p ${statedir}
+ExecStart=/opt/goapp/goapp
+
+[Install]
+WantedBy=multi-user.target

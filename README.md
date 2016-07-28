@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 SBRY-TEST
 =============
 
@@ -61,3 +62,15 @@ After is provisioned terraform should print assigned EIP as its output
 use given url in your browser to access the go application that is going to trigger the round-robin test.
 
 Resources should be available within few minutes after terraform prints its output
+=======
+Cookbooks branch
+--------------
+
+This branch contains sbry cookbook
+
+- **sbry::consul** installs and configures consul
+- **sbry::consul-template** installs and configures consul-template 
+- **sbry::goapp** installs and configures go application
+- **sbry::lb** installs and configures nginx lb
+
+>>>>>>> cookbooks
