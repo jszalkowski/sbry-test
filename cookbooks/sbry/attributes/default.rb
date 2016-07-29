@@ -1,9 +1,9 @@
-default['sbry']['lb']['packages'] = [ 'nginx', 'ntp', 'zip']
+default['sbry']['lb']['packages'] = ['nginx', 'ntp', 'zip']
 default['sbry']['goapp']['packages'] = ['gccgo', 'golang', 'ntp', 'zip']
 default['sbry']['consul_url'] = 'https://releases.hashicorp.com/terraform/0.6.16/terraform_0.6.16_linux_amd64.zip'
 default['sbry']['goapp']['goapp_root'] = '/opt/goapp'
 default['sbry']['goapp']['user'] = 'nobody'
-default['sbry']['goapp']['group'] = 'nogroup' 
+default['sbry']['goapp']['group'] = 'nogroup'
 default['sbry']['goapp']['gitrepo'] = 'https://github.com/jszalkowski/sbry-test.git'
 default['sbry']['goapp']['gitbranch'] = 'master'
 default['sbry']['goapp']['name'] = 'go'

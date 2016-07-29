@@ -1,11 +1,8 @@
 consul = "<%= @listener %>"
-token = ""
 retry = "<%= @retry %>"
 
-# <%= @role %>
 template {
-  source = "<%= @template_source %>"
-  destination = "<%= @template_dest %>"
-  command = "<%= @template_cmd %>"
+	source = "<%= @template_source %>"
+	destination = "<%= @template_dest %>"
+	command = "<%= @template_cmd %>"
 }
-

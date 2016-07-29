@@ -1,7 +1,0 @@
-##BACKENDS consul-template
-# cat backends.conf
-upstream magento_fpm_backend {
-{{ range service "magento-fpm"  "any" }}
-    server {{.Address}}:{{.Port}} max_fails=3 fail_timeout=1s;
-{{end}}
-}

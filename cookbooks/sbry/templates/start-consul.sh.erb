@@ -1,20 +1,20 @@
 #!/bin/bash
 
 lb () {
-	<%= @root %>/consul agent -server -bootstrap -data-dir=<%= @root %>  -ui -ui-dir=<%= @root %>
+  <%= @root %>/consul agent -server -bootstrap -data-dir=<%= @root %>  -ui -ui-dir=<%= @root %>
 }
 
 app () {
-ip_q=$(aws ec2 describe-instances --query 'Reservations[*].Instances[*].[join(`,`,Tags[?Key==`Name`].Value),[PrivateIpAddress]]'  --filter "Name=instance-state-name,Values=running" "Name=tag-key,Values=role" "Name=tag-value,Values=lb" --region eu-west-1 --output text |grep -E "[0-9]" )
-<%= @root %>/consul agent  -data-dir=<%= @root %>  -config-file=<%= @root %>/<%= @goconfig %> -join=$ip_q -ui -ui-dir=<%= @root %>
+  ip_q=$(aws ec2 describe-instances --query 'Reservations[*].Instances[*].[join(`,`,Tags[?Key==`Name`].Value),[PrivateIpAddress]]'  --filter "Name=instance-state-name,Values=running" "Name=tag-key,Values=role" "Name=tag-value,Values=lb" --region eu-west-1 --output text |grep -E "[0-9]" )
+  <%= @root %>/consul agent  -data-dir=<%= @root %>  -config-file=<%= @root %>/<%= @goconfig %> -join=$ip_q -ui -ui-dir=<%= @root %>
 }
 
 ROLE=$(cat /etc/role)
 
 if [ $ROLE == lb ];
 then
-	lb
+  lb
 else
-	app
+  app
 fi
 
