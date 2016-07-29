@@ -38,12 +38,13 @@ template node['sbry']['consul-template']['config_file'] do
 	owner node['sbry']['consul-template']['ct-user']
 	group node['sbry']['consul-template']['ct-group']
 	mode'0644'
-	variables({
-		:listener => node['sbry']['consul-template']['listener'],
-		:template_source => node['sbry']['consul-template']['template-source'],
-		:template_dest => node['sbry']['consul-template']['template-dest'],
-		:template_cmd => node['sbry']['consul-template']['template-cmd'],
-		:retry => node['sbry']['consul-template']['retry']})
+	variables(
+		'listener' => node['sbry']['consul-template']['listener'],
+		'template_source' => node['sbry']['consul-template']['template-source'],
+		'template_dest' => node['sbry']['consul-template']['template-dest'],
+		'template_cmd' => node['sbry']['consul-template']['template-cmd'],
+		'retry' => node['sbry']['consul-template']['retry']
+	)
 	notifies :restart, 'service[consul-template]'
 end
 
@@ -54,9 +55,9 @@ template '/etc/systemd/system/consul-template.service' do
 	group node['sbry']['consul-template']['ct-group']
 	mode'0644'
 	variables({
-		:listener => node['sbry']['consul-template']['listener'],
-		:bin => node['sbry']['consul-template']['bin'],
-		:config => node['sbry']['consul-template']['config']})
+		'listener' => node['sbry']['consul-template']['listener'],
+		'bin' => node['sbry']['consul-template']['bin'],
+		'config' => node['sbry']['consul-template']['config']})
 	notifies :restart, 'service[consul-template]'
 end
 
