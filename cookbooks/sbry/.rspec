@@ -1,2 +1,4 @@
+--default-path ./spec
 --color
+--format documentation
 --require spec_helper
